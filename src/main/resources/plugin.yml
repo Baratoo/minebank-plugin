@@ -1,0 +1,6 @@
+name: Minebank
+version: '${project.version}'
+main: com.minebank.minebankplugin.MineBankPlugin
+api-version: '1.20'
+authors: [Baratoo]
+description: Plugin Cliente para a Minebank API
