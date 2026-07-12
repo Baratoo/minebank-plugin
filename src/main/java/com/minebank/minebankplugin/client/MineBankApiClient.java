@@ -15,6 +15,7 @@ public class MineBankApiClient {
         this.httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(5)).build();
     }
 
+    //Registro do player
     public CompletableFuture<String> registerPlayer(String uuid, String nickName) {
         //Text Block - monta exatamente como está, sem precisar quebra de linhas
         String json = """
@@ -34,13 +35,23 @@ public class MineBankApiClient {
                 thenApply(HttpResponse::body);
     }
 
+    //Busca saldo
     public CompletableFuture<String> getSaldo(String uuid) {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(baseUrl + "/wallets/player/" + uuid))
+                .uri(URI.create(baseUrl + "/wallets/player/" + uuid + "/balance"))
                 .GET().build();
 
         return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body);
     }
 
+    //Busca mercado
+    public CompletableFuture<String> getMarket() {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseUrl + "/market/items"))
+                .GET().build();
+
+        return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body);
+    }
 }

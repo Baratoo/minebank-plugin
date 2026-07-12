@@ -4,3 +4,9 @@ main: com.minebank.minebankplugin.MineBankPlugin
 api-version: '1.20'
 authors: [Baratoo]
 description: Plugin Cliente para a Minebank API
+
+commands:
+    saldo:
+        description: Consulta o saldo atual da carteira.
+    loja:
+        description: Abre o Mercado Central.

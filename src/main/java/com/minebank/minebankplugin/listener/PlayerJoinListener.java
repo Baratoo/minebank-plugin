@@ -1,6 +1,7 @@
 package com.minebank.minebankplugin.listener;
 
 import com.minebank.minebankplugin.client.MineBankApiClient;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +25,7 @@ public class PlayerJoinListener implements Listener {
         String uuid = player.getUniqueId().toString();
         String nickName = player.getName();
 
-        logger.info("Enviando jogador para API: " + nickName);
+        logger.info(ChatColor.GREEN + "Enviando jogador para API: " + nickName);
 
         apiClient.registerPlayer(uuid, nickName)
                 .thenAccept(response -> {logger.info("SucessoAPI: " + nickName + response);})
